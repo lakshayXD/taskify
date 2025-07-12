@@ -53,15 +53,6 @@ class _TodoListScreenState extends ConsumerState<TodoListScreen> {
     super.dispose();
   }
 
-  ///method for scrolling the ListView to the bottom
-  void _scrollToBottom() {
-    _scrollController.animateTo(
-      _scrollController.position.maxScrollExtent,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.linear,
-    );
-  }
-
   ///method for building the exit confirmation alert dialog
   Future<void> _showExitConfirmationDialog(BuildContext context) async {
     return showDialog<void>(
@@ -110,7 +101,6 @@ class _TodoListScreenState extends ConsumerState<TodoListScreen> {
       await _saveTasks(updatedList);
       await _setTabList(_currTabIndex);
       showSuccessSnackBar(taskAddedText);
-      _scrollToBottom();
       _addTaskFieldController.clear();
     } else {
       showErrorSnackBar(inputValidTaskText);
@@ -228,7 +218,11 @@ class _TodoListScreenState extends ConsumerState<TodoListScreen> {
                     child: Center(
                       child: Text(
                         taskifyText,
-                        style: Theme.of(context).textTheme.headlineLarge,
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: primaryWhite,
+                        ),
                       ),
                     ),
                   ),
@@ -287,8 +281,12 @@ class _TodoListScreenState extends ConsumerState<TodoListScreen> {
                                                 child: FadeInAnimation(
                                                   child: Column(
                                                     children: [
-                                                      if (index != taskListState.length - 1)
-                                                        const SizedBox(height: 16),
+                                                      if (index !=
+                                                          taskListState.length -
+                                                              1)
+                                                        const SizedBox(
+                                                          height: 16,
+                                                        ),
                                                       TaskCard(
                                                         isCompleted:
                                                             task.isCompleted,

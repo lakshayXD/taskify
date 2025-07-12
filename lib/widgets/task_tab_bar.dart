@@ -37,7 +37,7 @@ class _TaskTabBarState extends State<TaskTabBar> {
                   width: tabWidth,
                   height: 32,
                   decoration: BoxDecoration(
-                    color: primaryBlue.withOpacity(0.1),
+                    color: primaryBlue.withOpacity(0.4),
                     borderRadius: BorderRadius.circular(6),
                   ),
                 ),
@@ -63,7 +63,14 @@ class _TaskTabBarState extends State<TaskTabBar> {
                                     ? primaryBlue
                                     : Colors.black.withOpacity(0.5),
                               ),
-                          child: Text(tabs[index]),
+                          child: Text(
+                            tabs[index],
+                            style: Theme.of(context).textTheme.bodyLarge
+                                ?.copyWith(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                          ),
                         ),
                       ),
                     ),
