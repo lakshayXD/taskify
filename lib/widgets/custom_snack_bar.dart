@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list/utils/constants.dart';
 import 'package:todo_list/utils/utilities.dart';
 import 'package:todo_list/utils/globals.dart';
 
@@ -52,7 +53,14 @@ void _showSnackBar(
     ?..clearSnackBars()
     ..showSnackBar(
       SnackBar(
-        content: Text(text!),
+        content: Text(
+          text!,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: primaryWhite,
+          ),
+        ),
         backgroundColor: _getBackgroundColor(snackBarType),
         clipBehavior: Clip.none,
         padding: const EdgeInsets.all(10),
